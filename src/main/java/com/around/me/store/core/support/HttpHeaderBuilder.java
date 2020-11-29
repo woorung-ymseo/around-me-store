@@ -1,7 +1,7 @@
 package com.around.me.store.core.support;
 
 
-import com.around.me.user.core.constants.HeaderConstants;
+import com.around.me.store.core.constants.HeaderConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 

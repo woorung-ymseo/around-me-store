@@ -19,12 +19,12 @@ public class SwaggerConfig {
     Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .useDefaultResponseMessages(false)
-                .groupName("AROUND ME USER API v1.0")
+                .groupName("AROUND ME STORE API v1.0")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.around.me.user.api.v1"))
-                .paths(PathSelectors.ant("/user/api/v1/**"))
+                .apis(RequestHandlerSelectors.basePackage("com.around.me.store.api.v1"))
+                .paths(PathSelectors.ant("/store/api/v1/**"))
                 .build()
-                .apiInfo(apiInfo("AROUND ME API", "v1.0"))
+                .apiInfo(apiInfo("AROUND ME STORE API", "v1.0"))
                 ;
     }
 
