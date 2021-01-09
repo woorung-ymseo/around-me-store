@@ -1,21 +1,16 @@
 package com.around.me.store.core.context;
 
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
-@RequiredArgsConstructor
 @Component
 public class ResponseContextHolder {
-
-    private final RestTemplate restTemplate;
 
     private static UserContextHolder userContextHolder;
 
     private static String xAuthToken;
 
-    private static String refreshToken;
+    private static String xRefreshToken;
 
     /**
      * Get User
@@ -38,10 +33,19 @@ public class ResponseContextHolder {
     /**
      * Set AccessToken
      *
-     * @param accessToken
+     * @param xAuthToken
      */
-    public static void xAuthToken(String accessToken) {
-        ResponseContextHolder.xAuthToken = accessToken;
+    public static void xAuthToken(String xAuthToken) {
+        ResponseContextHolder.xAuthToken = xAuthToken;
+    }
+
+    /**
+     * Set AccessToken
+     *
+     * @param xRefreshToken
+     */
+    public static void xRefreshToken(String xRefreshToken) {
+        ResponseContextHolder.xRefreshToken = xRefreshToken;
     }
 
     /**
@@ -51,5 +55,14 @@ public class ResponseContextHolder {
      */
     public static String xAuthToken() {
         return ResponseContextHolder.xAuthToken;
+    }
+
+    /**
+     * Get RefreshToken
+     *
+     * @return
+     */
+    public static String xRefreshToken() {
+        return ResponseContextHolder.xRefreshToken;
     }
 }
