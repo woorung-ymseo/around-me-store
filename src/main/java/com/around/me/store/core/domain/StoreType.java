@@ -16,7 +16,7 @@ import lombok.Getter;
  * @name   점포
  *
  */
-@Table(name = "store")
+@Table(name = "storeType")
 @Entity
 @Getter
 public class StoreType {

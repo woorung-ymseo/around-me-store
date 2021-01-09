@@ -29,17 +29,13 @@ public class StoreKeyword {
 	@Setter
 	private long storeKeywordNo;
 
-	@ApiModelProperty(value="점포 키워드 관리Entity")
-	@ManyToOne
-	@JoinColumn(name="menuKeywordManageNo")
+	@ApiModelProperty(value="점포 키워드 관리번호")
 	@Setter
-	private StoreKeywordManage storeKeywordManage;
+	private StoreKeywordManage storeKeywordManageNo;
 
-	@ApiModelProperty(value="점포Entity")
-	@ManyToOne
-	@JoinColumn(name="STORE_NO")
+	@ApiModelProperty(value="점포번호")
 	@Setter
-	private Store store;
+	private Long storeNo;
 
 	@ApiModelProperty(value="사용여부")
 	@Setter
