@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -20,26 +22,30 @@ import lombok.Setter;
 @Entity
 @Getter
 public class StoreKeyword {
-	
+
 	@Id
 	@GeneratedValue
 	@ApiModelProperty(value="점포 키워드 번호")
 	@Setter
 	private long storeKeywordNo;
-	
-	@ApiModelProperty(value="점포 키워드 관리 번호")
+
+	@ApiModelProperty(value="점포 키워드 관리Entity")
+	@ManyToOne
+	@JoinColumn(name="menuKeywordManageNo")
 	@Setter
-	private long storeKeywordManageNo;
-	
-	@ApiModelProperty(value="점포 번호")
+	private StoreKeywordManage storeKeywordManage;
+
+	@ApiModelProperty(value="점포Entity")
+	@ManyToOne
+	@JoinColumn(name="STORE_NO")
 	@Setter
-	private long storeNo;
-	
+	private Store store;
+
 	@ApiModelProperty(value="사용여부")
 	@Setter
 	private String useYn;
-	
-	 @ApiModelProperty(value="등록일시")
+
+	@ApiModelProperty(value="등록일시")
     private LocalDateTime regDatetime;
 
     @ApiModelProperty(value="수정일시")
