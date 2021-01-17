@@ -12,7 +12,7 @@ public class PostStoreKeywordDTO {
 
 	@ApiModelProperty(value="점포번호")
 	@NotBlank(message = "점포번호는 필수 값입니다.")
-	long   store_no;
+	long   storeNo;
 
 	@ApiModelProperty(value="사용여부")
 	YnEnum userYn = YnEnum.Y;

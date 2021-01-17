@@ -1,5 +1,6 @@
 package com.around.me.store.api.v1.store.repository;
 
+import java.awt.Menu;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.around.me.store.api.v1.store.dto.GetMenuDTO;
 import com.around.me.store.api.v1.storeKeyword.dto.GetMenuImageDTO;
 import com.around.me.store.api.v1.storeKeyword.dto.PostStoreKeywordDTO;
 import com.around.me.store.core.domain.StoreImage;
@@ -31,4 +33,12 @@ public interface StoreRepository extends JpaRepository<StoreKeyword, Long> {
 	 * @return : Optional<List<StoreImage>>
 	 */
 	Optional<List<StoreImage>> findbyDeleteYnAndStoreNoAndImageSort(@Valid GetMenuImageDTO getMenuImageDTO);
+
+	/**
+	 * @date   : 2021. 1. 16.
+	 * @author : wonho
+	 * @param  : getMenuImageDTO
+	 * @return :
+	 */
+	Optional<List<Menu>> findByDeleteYnAndImageSort(@Valid GetMenuDTO getMenuDTO);
 }
