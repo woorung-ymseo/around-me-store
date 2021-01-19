@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.around.me.store.api.v1.storeKeyword.dto.PostStoreKeywordDTO;
 import com.around.me.store.api.v1.storeKeyword.repository.StoreKeywordRepository;
 import com.around.me.store.core.domain.StoreKeywordManage;
-import com.around.me.support.core.enums.common.YnEnum;
+import com.around.me.store.core.enums.common.YnEnum;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,7 +28,7 @@ public class StoreKeywordService {
 
 		// 조건조회
 		} else {
-			storeKeywords = storeKeywordRepository.findByUserYnAndStoreNo(postStoreKeywordDTO);
+			storeKeywords = storeKeywordRepository.findByUseYnAndStoreNo(postStoreKeywordDTO.getUseYn(),postStoreKeywordDTO.getStoreNo());//--수정
 		}
 
 		return storeKeywords.orElse(null);

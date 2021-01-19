@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -31,7 +29,7 @@ public class StoreKeyword {
 
 	@ApiModelProperty(value="점포 키워드 관리번호")
 	@Setter
-	private StoreKeywordManage storeKeywordManageNo;
+	private long storeKeywordManageNo;
 
 	@ApiModelProperty(value="점포번호")
 	@Setter

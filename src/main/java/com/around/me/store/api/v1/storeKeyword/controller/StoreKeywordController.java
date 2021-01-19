@@ -12,9 +12,11 @@ import com.around.me.store.core.annoitation.version.RestMappingV1;
 import com.around.me.store.core.domain.StoreKeywordManage;
 import com.around.me.store.core.dto.Response;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
+@Api(tags = "점포키워드")
 @RequiredArgsConstructor
 @RestMappingV1
 public class StoreKeywordController {

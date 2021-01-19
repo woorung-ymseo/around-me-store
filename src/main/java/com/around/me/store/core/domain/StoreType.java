@@ -63,7 +63,7 @@ public class StoreType {
 	private Long areaNo;
 
 	@ApiModelProperty(value="점주회원번호")
-	@OneToMany
+	/* @OneToMany */
 	private Long ceoUserNo;
 
 	@ApiModelProperty(value="사업자번호")

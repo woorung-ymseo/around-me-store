@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.around.me.support.core.enums.common.YnEnum;
+import com.around.me.store.core.enums.common.YnEnum;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

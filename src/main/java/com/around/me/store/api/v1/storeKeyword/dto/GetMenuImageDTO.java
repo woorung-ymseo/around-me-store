@@ -3,7 +3,7 @@ package com.around.me.store.api.v1.storeKeyword.dto;
 import javax.validation.constraints.NotBlank;
 
 import com.around.me.store.core.enums.common.ImageSortEnum;
-import com.around.me.support.core.enums.common.YnEnum;
+import com.around.me.store.core.enums.common.YnEnum;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

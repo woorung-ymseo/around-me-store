@@ -23,13 +23,13 @@ public class StoreKeywordManage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ApiModelProperty(value="메뉴키워드관리번호")
+	@ApiModelProperty(value="점포 키워드 관리 번호")
 	@Setter
-	private long menuKeywordManageNo;
+	private long storeKeywordManageNo;
 
-	@ApiModelProperty(value="메뉴키워드관리명")
+	@ApiModelProperty(value="점포 키워드 관리 명")
 	@Setter
-	private String menuKeywordManageName;
+	private String storeKeywordManageName;
 
 	@ApiModelProperty(value="사용 여부")
 	@Setter

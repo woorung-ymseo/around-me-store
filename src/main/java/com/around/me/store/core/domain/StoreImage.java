@@ -3,10 +3,11 @@ package com.around.me.store.core.domain;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.around.me.store.core.enums.common.ImageSortEnum;
-import com.around.me.support.core.enums.common.YnEnum;
+import com.around.me.store.core.enums.common.YnEnum;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Getter
 public class StoreImage {
 
+	@Id
 	@ApiModelProperty(value="점포이미지번호")
 	@Setter
 	private Long storeImageNo;
