@@ -10,10 +10,12 @@ import com.around.me.store.api.v1.store.dto.GetParamEventDTO;
 import com.around.me.store.api.v1.store.service.StoreService;
 import com.around.me.store.core.annoitation.version.RestMappingV1;
 import com.around.me.store.core.domain.Store;
+import com.around.me.store.core.domain.StoreImage;
 import com.around.me.store.core.dto.Response;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -60,6 +62,32 @@ public class StoreController {
         List<Store> stores = storeService.getStores();
 
         return Response.ok(stores);
+    }
+    
+    /**
+     * 점포 정보 조회
+     * @return Response<Store>
+     */
+    @ApiOperation(value = "점포 정보 조회")
+    @GetMapping(value = "/stores/{storeNo}")
+    Response<Store> getStore(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
+
+        Store store = storeService.getStore(storeNo);
+
+        return Response.ok(store);
+    }
+    
+    /**
+     * 점포 이미지 리스트 조회
+     * @return Response<List<StoreImage>>
+     */
+    @ApiOperation(value = "점포 이미지 리스트 조회")
+    @GetMapping(value = "/store/{storeNo}/images")
+    Response<List<StoreImage>> getStoreImages(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
+
+        List<StoreImage> storeImages = storeService.getStoreImages(storeNo);
+
+        return Response.ok(storeImages);
     }
 
 }

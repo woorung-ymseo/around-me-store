@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.around.me.store.api.v1.menu.repository.MenuRepository;
 import com.around.me.store.api.v1.storeKeyword.dto.GetMenuImageDTO;
 import com.around.me.store.api.v1.menu.dto.GetMenuDTO;
+import com.around.me.store.core.domain.MenuDetail;
 import com.around.me.store.core.domain.StoreImage;
 import com.around.me.store.core.enums.common.YnEnum;
 
@@ -29,8 +30,10 @@ public class MenuService {
 	 * @Return : List<StoreImage>
 	 */
 	public List<StoreImage> getMenuImages(@Valid GetMenuImageDTO getMenuImageDTO) {
-		Optional<List<StoreImage>> menuImages = menuRepository.findbyDeleteYnAndStoreNoAndImageSort(getMenuImageDTO.getDeleteYn(),getMenuImageDTO.getImageSort());//--수정
+		//Optional<List<StoreImage>> menuImages = menuRepository.findbyDeleteYnAndStoreNoAndImageSort(getMenuImageDTO);
 
+		Optional<List<StoreImage>> menuImages=null;//--수정
+		
 		return menuImages.orElse(null);
 	}
 
@@ -41,18 +44,20 @@ public class MenuService {
 	 * @return : List<Menu>
 	 */
 	public List<Menu> getStoreMenus(@Valid GetMenuDTO getMenuDTO) {
-		Optional<List<Menu>> menus = menuRepository.findAllByStoreNoAndUseYn(getMenuDTO.getStoreNo(), getMenuDTO.getUseYn());
+		//Optional<List<Menu>> menus = menuRepository.findAllByStoreNoAndUseYn(getMenuDTO);
 
+		Optional<List<Menu>> menus=null;//--수정
+		
 		return menus.orElse(null);
 	}
 
 	/**
 	 * 메뉴 검색
 	 * @param String menuNm
-	 * @return List<Menu>
+	 * @return List<MenuDetail>
 	 */
-	public List<Menu> getMenus(@Valid String menuNm) {
-		Optional<List<Menu>> menus = menuRepository.findAllByUseYnAndMenuName(YnEnum.Y, menuNm);
+	public List<MenuDetail> getMenus(@Valid String menuNm) {
+		Optional<List<MenuDetail>> menus = menuRepository.findAllByUseYnAndMenuNameContaining(YnEnum.Y, menuNm);
 
 		return menus.orElse(null);
 	}

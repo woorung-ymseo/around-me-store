@@ -13,13 +13,15 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class StoreOpeningTimeService {//--수정
+public class StoreOpeningTimeService {
 
 	private final StoreOpeningTimeRepository storeOpeningTimeRepository;
 
 	public List<StoreOpeningTime> getStoreOpeningTimes(GetParamOpeningTimesDTO getOpeningTimesDTO){
 		
-		Optional<List<StoreOpeningTime>> getStoreOpeningTimes = storeOpeningTimeRepository.findAllByStoreNo(getOpeningTimesDTO.getStoreNo());
+		//Optional<List<StoreOpeningTime>> getStoreOpeningTimes = storeOpeningTimeRepository.findAllByStoreNo(getOpeningTimesDTO);
+		
+		Optional<List<StoreOpeningTime>> getStoreOpeningTimes = null;//--수정
 		
 		return getStoreOpeningTimes.orElse(null);
 	}

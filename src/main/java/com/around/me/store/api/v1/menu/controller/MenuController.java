@@ -12,6 +12,7 @@ import com.around.me.store.api.v1.menu.dto.GetMenuDTO;
 import com.around.me.store.api.v1.menu.service.MenuService;
 import com.around.me.store.api.v1.storeKeyword.dto.GetMenuImageDTO;
 import com.around.me.store.core.annoitation.version.RestMappingV1;
+import com.around.me.store.core.domain.MenuDetail;
 import com.around.me.store.core.domain.StoreImage;
 import com.around.me.store.core.dto.Response;
 
@@ -49,7 +50,7 @@ public class MenuController {
 
 	@ApiOperation(value = "점포 메뉴 조회")
 	@GetMapping(value = "/store/menus")
-	Response<List<Menu>> getStoreMenus(@Valid GetMenuDTO getMenuDTO) {
+	Response<List<Menu>> getStoreMenus(@Valid GetMenuDTO getMenuDTO) {//--수정 Menu-->MenuDetail
 
 		List<Menu> menus = menuService.getStoreMenus(getMenuDTO);
 
@@ -63,13 +64,13 @@ public class MenuController {
 
     /**
      * 메뉴 검색
-     * @return Response<List<Menu>>
+     * @return Response<List<MenuDetail>>
      */
     @ApiOperation(value = "메뉴 검색")
     @GetMapping(value = "/stores/menus/{menuNm}")
-    Response<List<Menu>> getMenus(@ApiParam(value = "메뉴명", required = true, example = "1") @PathVariable String menuNm) {
+    Response<List<MenuDetail>> getMenus(@ApiParam(value = "메뉴명", required = true, example = "아메리카노") @PathVariable String menuNm) {
 
-    	List<Menu> menus = menuService.getMenus(menuNm);
+    	List<MenuDetail> menus = menuService.getMenus(menuNm);
 
     	return Response.ok(menus);
     }

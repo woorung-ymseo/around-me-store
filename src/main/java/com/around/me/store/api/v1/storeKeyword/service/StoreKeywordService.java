@@ -28,7 +28,7 @@ public class StoreKeywordService {
 
 		// 조건조회
 		} else {
-			storeKeywords = storeKeywordRepository.findByUseYnAndStoreNo(postStoreKeywordDTO.getUseYn(),postStoreKeywordDTO.getStoreNo());//--수정
+			//storeKeywords = storeKeywordRepository.findByUseYnAndStoreNo(postStoreKeywordDTO);//--수정
 		}
 
 		return storeKeywords.orElse(null);

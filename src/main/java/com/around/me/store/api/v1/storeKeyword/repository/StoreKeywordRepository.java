@@ -25,7 +25,7 @@ public interface StoreKeywordRepository extends JpaRepository<StoreKeyword, Long
 	 * @param  : postStoreKeywordDTO
 	 * @return : Optional<List<StoreKeywordManage>>
 	 */
-	Optional<List<StoreKeywordManage>> findByUseYnAndStoreNo(YnEnum useYn, long storeNo);//--수정 PostStoreKeywordDTO
+	//Optional<List<StoreKeywordManage>> findByUseYnAndStoreNo(YnEnum useYn, long storeNo);//--수정
 }
 
 

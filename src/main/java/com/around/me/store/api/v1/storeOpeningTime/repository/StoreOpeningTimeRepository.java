@@ -14,6 +14,6 @@ public interface StoreOpeningTimeRepository extends JpaRepository<StoreOpeningTi
 	 * @param YnEnum long storeNo
 	 * @return Optional<List<StoreOpeningTime>>
 	 */
-	Optional<List<StoreOpeningTime>> findAllByStoreNo(long storeNo);
+	//Optional<List<StoreOpeningTime>> findAllByStoreNo(StoreOpeningTime StoreOpeningTime);//--수정
 
 }
