@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.around.me.store.api.v1.store.dto.EventDTO;
 import com.around.me.store.api.v1.store.dto.GetParamEventDTO;
@@ -17,7 +16,6 @@ import com.around.me.store.core.dto.Response;
 import com.around.me.store.core.enums.common.YnEnum;
 import com.around.me.store.core.support.ResourceClient;
 
-import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -51,27 +49,29 @@ public class StoreService {
     
     /**
      * 점포 정보 조회
+     * @param long storeNo
      * @return Store
      */
-    public Store getStore(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
+    public Store getStore(long storeNo) {
 
-    	Assert.isTrue(storeNo == 0, "잘못된 요청입니다.");
+    	//Assert.isTrue(storeNo == 0, "잘못된 요청입니다."); --수정
     	
-        Optional<Store> store = storeRepository.findAllBystoreNoAndClosedYn(storeNo, YnEnum.N);
+        Optional<Store> store = storeRepository.findByStoreNoAndClosedYn(storeNo, YnEnum.N);
 
         return store.orElse(null);
     }
     
     /**
      * 점포 이미지 리스트 조회
+     * @param long storeNo
      * @return List<StoreImage>
      */
     public List<StoreImage> getStoreImages(long storeNo) {
 
-    	Assert.isTrue(storeNo == 0, "잘못된 요청입니다.");
+    	//Assert.isTrue(storeNo == 0, "잘못된 요청입니다.");// --수정
     	
         Optional<List<StoreImage>> storeImages = storeImageRepository.findAllByStoreNoAndDeleteYn(storeNo, YnEnum.N);
-
+        
         return storeImages.orElse(null);
     }
 

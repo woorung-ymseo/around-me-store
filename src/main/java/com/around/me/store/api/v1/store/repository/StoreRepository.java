@@ -22,5 +22,5 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
 	 * @param long StoreNo, YnEnum closedYn
 	 * @return Optional<Store>
 	 */
-	Optional<Store> findAllBystoreNoAndClosedYn(long StoreNo, YnEnum closedYn);
+	Optional<Store> findByStoreNoAndClosedYn(long StoreNo, YnEnum closedYn);
 }

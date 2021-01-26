@@ -66,10 +66,11 @@ public class StoreController {
     
     /**
      * 점포 정보 조회
+     * @param long storeNo
      * @return Response<Store>
      */
     @ApiOperation(value = "점포 정보 조회")
-    @GetMapping(value = "/stores/{storeNo}")
+    @GetMapping(value = "/store/{storeNo}")
     Response<Store> getStore(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
 
         Store store = storeService.getStore(storeNo);
@@ -79,6 +80,7 @@ public class StoreController {
     
     /**
      * 점포 이미지 리스트 조회
+     * @param long termNo
      * @return Response<List<StoreImage>>
      */
     @ApiOperation(value = "점포 이미지 리스트 조회")
@@ -87,6 +89,10 @@ public class StoreController {
 
         List<StoreImage> storeImages = storeService.getStoreImages(storeNo);
 
+        for(StoreImage si:storeImages) {
+        	System.out.println(si.toString());
+        }
+        
         return Response.ok(storeImages);
     }
 

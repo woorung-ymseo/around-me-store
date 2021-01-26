@@ -3,10 +3,16 @@ package com.around.me.store.core.domain;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.around.me.store.core.enums.common.YnEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -42,7 +48,7 @@ public class Store {
 	private String storeDescription;
 
 	@ApiModelProperty(value="이용안내")
-	private String useInformatioSn;
+	private String useInformation;
 
 	@ApiModelProperty(value="전화번호")
 	private String telNo;
@@ -69,15 +75,20 @@ public class Store {
 	private String businessNo;
 
 	@ApiModelProperty(value="폐업여부")
-	private String closedYn;
+	@Enumerated(EnumType.STRING)
+	private YnEnum closedYn;
 
 	@ApiModelProperty(value="개업일")
 	private LocalDateTime foundingDate;
 
 	@ApiModelProperty(value="등록일시")
+	@DateTimeFormat(pattern = "yyyyMMddHHmmss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime regDatetime;
 
     @ApiModelProperty(value="수정일시")
+    @DateTimeFormat(pattern = "yyyyMMddHHmmss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime modDatetime;
 
     @ApiModelProperty(value="등록자")

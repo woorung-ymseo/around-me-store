@@ -3,11 +3,14 @@ package com.around.me.store.core.domain;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.around.me.store.core.enums.common.ImageSortEnum;
 import com.around.me.store.core.enums.common.YnEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -34,14 +37,18 @@ public class StoreImage {
 
 	@ApiModelProperty(value="대표이미지여부")
 	@Setter
+	@Enumerated(EnumType.STRING)
 	private YnEnum representationYn;
 
 	@ApiModelProperty(value="이미지구분")
 	@Setter
-	private ImageSortEnum imageSort;
+	//@Enumerated(EnumType.STRING)
+	//private ImageSortEnum imageSort;//--수정 sotreImage테이블 점포사진? 이미지 구분->char(2)
+	private String imageSort;
 
 	@ApiModelProperty(value="삭제여부")
 	@Setter
+	@Enumerated(EnumType.STRING)
 	private YnEnum deleteYn;
 
 	@ApiModelProperty(value="정렬번호")
@@ -50,17 +57,19 @@ public class StoreImage {
 
 	@ApiModelProperty(value="등록일시")
 	@Setter
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMdd", timezone = "Asia/Seoul") 
 	private LocalDateTime regDatetime;
 
 	@ApiModelProperty(value="수정일시")
 	@Setter
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMdd", timezone = "Asia/Seoul") 
 	private LocalDateTime modDatetime;
 
 	@ApiModelProperty(value="등록자")
 	@Setter
-	private long regUserNo;
+	private Long regUserNo;
 
 	@ApiModelProperty(value="수정자")
 	@Setter
-	private long modUserNo;
+	private Long modUserNo;
 }

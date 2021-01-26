@@ -56,8 +56,8 @@ public class MenuService {
 	 * @param String menuNm
 	 * @return List<MenuDetail>
 	 */
-	public List<MenuDetail> getMenus(@Valid String menuNm) {
-		Optional<List<MenuDetail>> menus = menuRepository.findAllByUseYnAndMenuNameContaining(YnEnum.Y, menuNm);
+	public List<MenuDetail> getMenus(String menuNm) {
+		Optional<List<MenuDetail>> menus = menuRepository.findAllByUseYnAndMenuNameContaining(YnEnum.Y, menuNm);//--수정 몇글자 조회가능한지
 
 		return menus.orElse(null);
 	}
