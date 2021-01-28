@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.around.me.store.core.enums.common.ImageSortEnum;
 import org.springframework.stereotype.Service;
 
 import com.around.me.store.api.v1.menu.repository.MenuRepository;
@@ -30,10 +31,10 @@ public class MenuService {
 	 * @Return : List<StoreImage>
 	 */
 	public List<StoreImage> getMenuImages(@Valid GetMenuImageDTO getMenuImageDTO) {
-		//Optional<List<StoreImage>> menuImages = menuRepository.findbyDeleteYnAndStoreNoAndImageSort(getMenuImageDTO);
 
-		Optional<List<StoreImage>> menuImages=null;//--수정
-		
+		// 신원호: DTO 필요한 데이터 세팅
+		Optional<List<StoreImage>> menuImages = menuRepository.findByStoreNoAndImageSort(getMenuImageDTO.getStoreNo(), ImageSortEnum.MENU);
+
 		return menuImages.orElse(null);
 	}
 
@@ -43,18 +44,16 @@ public class MenuService {
 	 * @param  : getMenuDTO
 	 * @return : List<Menu>
 	 */
-	public List<Menu> getStoreMenus(@Valid GetMenuDTO getMenuDTO) {
-		//Optional<List<Menu>> menus = menuRepository.findAllByStoreNoAndUseYn(getMenuDTO);
+	public List<Menu> getStoreMenus(GetMenuDTO getMenuDTO) {
+		Optional<List<Menu>> menus = menuRepository.findAllByStoreNoAndUseYn(getMenuDTO.getStoreNo(), YnEnum.Y);
 
-		Optional<List<Menu>> menus=null;//--수정
-		
 		return menus.orElse(null);
 	}
 
+
 	/**
-	 * 메뉴 검색
-	 * @param String menuNm
-	 * @return List<MenuDetail>
+	 * @param menuNm
+	 * @return
 	 */
 	public List<MenuDetail> getMenus(String menuNm) {
 		Optional<List<MenuDetail>> menus = menuRepository.findAllByUseYnAndMenuNameContaining(YnEnum.Y, menuNm);//--수정 몇글자 조회가능한지

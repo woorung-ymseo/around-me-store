@@ -30,9 +30,10 @@ public class StoreService {
 	private final ResourceClient resourceClient;
 
 	public List<EventDTO> getEvents(GetParamEventDTO getParamEventDTO) {
-
+        // 신원호 : 찾아보자
 		Response<List> resultResponse = resourceClient.getForResponse("http://127.0.0.1:8082/event/api/v1/events", getParamEventDTO, List.class);
 
+		// 외부 데이터 호출 할 때 코드랑 다 담겨있으니까 response 그대로 다 내려라
 		return resultResponse.getContent();
 	}
 	
@@ -49,7 +50,7 @@ public class StoreService {
     
     /**
      * 점포 정보 조회
-     * @param long storeNo
+     * @param  storeNo
      * @return Store
      */
     public Store getStore(long storeNo) {
@@ -63,7 +64,7 @@ public class StoreService {
     
     /**
      * 점포 이미지 리스트 조회
-     * @param long storeNo
+     * @param storeNo
      * @return List<StoreImage>
      */
     public List<StoreImage> getStoreImages(long storeNo) {

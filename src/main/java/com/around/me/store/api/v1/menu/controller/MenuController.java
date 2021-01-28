@@ -34,18 +34,15 @@ public class MenuController {
 	// 메뉴서비스
 	private final MenuService menuService;
 
-	@ApiOperation(value = "메뉴판정보 조회")
+	@ApiOperation(value = "메뉴판이미지 조회")
 	@GetMapping(value = "/store/menu-images")
 	Response<List<StoreImage>> getMenuImages(@Valid GetMenuImageDTO getMenuImageDTO) {
+
+		// 범용적으로 쓸 수 있게 서비스 명을 바꿔라...
+		// 업무별로 패키지 구성
 		List<StoreImage> menuImages = menuService.getMenuImages(getMenuImageDTO);
 
-		if (menuImages == null) {
-    		return Response.badRequest(null);
-
-    	} else {
     		return Response.ok(menuImages);
-    	}
-
 	}
 
 	@ApiOperation(value = "점포 메뉴 조회")
@@ -54,12 +51,7 @@ public class MenuController {
 
 		List<Menu> menus = menuService.getStoreMenus(getMenuDTO);
 
-		if (menus == null) {
-			return Response.badRequest(null);
-
-		} else {
-			return Response.ok(menus);
-		}
+		return Response.ok(menus);
 	}
 
     /**
@@ -74,5 +66,4 @@ public class MenuController {
 
     	return Response.ok(menus);
     }
-
 }
