@@ -1,11 +1,9 @@
 package com.around.me.store.api.v1.menu.repository;
 
 import com.around.me.store.core.domain.MenuDetail;
-import com.around.me.store.core.domain.MenuType;
 import com.around.me.store.core.enums.common.YnEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +15,7 @@ public interface MenuRepository extends JpaRepository<MenuDetail, Long> {
 	 * @param  : getMenuImageDTO
 	 * @return :
 	 */
-	Optional<List<MenuType>> findAllByStoreNoAndUseYn(long storeNo, YnEnum useYn);
+	Optional<List<MenuDetail>> findAllByStoreNoAndUseYn(long storeNo, YnEnum useYn);
 
 
 	/**
@@ -25,5 +23,5 @@ public interface MenuRepository extends JpaRepository<MenuDetail, Long> {
 	 * @param menuNm
 	 * @return
 	 */
-	Optional<List<MenuType>> findAllByUseYnAndMenuNameContaining(YnEnum useYn, String menuNm);
+	Optional<List<MenuDetail>> findAllByUseYnAndMenuNameContaining(YnEnum useYn, String menuNm);
 }

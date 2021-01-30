@@ -23,31 +23,23 @@ public class StoreKeyword {
 
 	@Id
 	@GeneratedValue
-	@ApiModelProperty(value="점포 키워드 번호")
 	@Setter
 	private long storeKeywordNo;
 
-	@ApiModelProperty(value="점포 키워드 관리번호")
 	@Setter
 	private long storeKeywordManageNo;
 
-	@ApiModelProperty(value="점포번호")
 	@Setter
 	private Long storeNo;
 
-	@ApiModelProperty(value="사용여부")
 	@Setter
 	private String useYn;
 
-	@ApiModelProperty(value="등록일시")
     private LocalDateTime regDatetime;
 
-    @ApiModelProperty(value="수정일시")
     private LocalDateTime modDatetime;
 
-    @ApiModelProperty(value="등록자")
     private Long regUserNo;
 
-    @ApiModelProperty(value="수정자")
     private Long modUserNo;
 }

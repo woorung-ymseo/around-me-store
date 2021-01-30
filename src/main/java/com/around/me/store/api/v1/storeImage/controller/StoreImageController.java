@@ -62,6 +62,6 @@ public class StoreImageController {
 
         List<StoreImage> storeImages = storeImageService.getStoreMenuImages(getParamMenuImageDTO);
 
-        return Response.ok(storeImages);
+        return Response.ok(null);
     }
 }

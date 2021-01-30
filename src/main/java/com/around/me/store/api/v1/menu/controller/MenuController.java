@@ -1,6 +1,6 @@
 package com.around.me.store.api.v1.menu.controller;
 
-import com.around.me.store.api.v1.menu.dto.GetMenuDTO;
+import com.around.me.store.api.v1.menu.dto.GetParamMenuDTO;
 import com.around.me.store.api.v1.menu.service.MenuService;
 import com.around.me.store.core.annoitation.version.RestMappingV1;
 import com.around.me.store.core.domain.MenuDetail;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.validation.Valid;
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -32,9 +31,9 @@ public class MenuController {
 
 	@ApiOperation(value = "점포 메뉴 조회")
 	@GetMapping(value = "/store/menus")
-	Response<List<MenuType>> getStoreMenus(@Valid GetMenuDTO getMenuDTO) {
+	Response<List<MenuDetail>> getStoreMenus(@Valid GetParamMenuDTO getParamMenuDTO) {
 
-		List<MenuType> menus = menuService.getStoreMenus(getMenuDTO);
+		List<MenuDetail> menus = menuService.getStoreMenus(getParamMenuDTO);
 
 		return Response.ok(menus);
 	}
@@ -45,9 +44,9 @@ public class MenuController {
      */
     @ApiOperation(value = "메뉴 검색")
     @GetMapping(value = "/stores/menus/{menuNm}")
-    Response<List<MenuType>> getMenus(@ApiParam(value = "메뉴명", required = true, example = "아메리카노") @PathVariable String menuNm) {
+    Response<List<MenuDetail>> getMenus(@ApiParam(value = "메뉴명", required = true, example = "아메리카노") @PathVariable String menuNm) {
 
-    	List<MenuType> menus = menuService.getMenus(menuNm);
+    	List<MenuDetail> menus = menuService.getMenus(menuNm);
 
     	return Response.ok(menus);
     }
