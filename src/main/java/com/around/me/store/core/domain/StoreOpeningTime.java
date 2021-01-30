@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 
-@Table(name = "StoreOpeningTime")
+@Table(name = "store_opening_time")
 @Entity
 @Getter
 public class StoreOpeningTime {

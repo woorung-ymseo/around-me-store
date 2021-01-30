@@ -1,5 +1,6 @@
 package com.around.me.store.api.v1.menu.dto;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
 import com.around.me.store.core.enums.common.YnEnum;
@@ -10,8 +11,8 @@ import lombok.Getter;
 @Getter
 public class GetMenuDTO {
 
-	@ApiModelProperty(value="점포번호", required=true)
-	@NotBlank(message = "점포번호는 필수 값입니다.")
+	@ApiModelProperty(value="점포번호", example = "1", required=true)
+	@Max(20)
 	long   storeNo;
 
 	@ApiModelProperty(value="사용 여부", example="Y")

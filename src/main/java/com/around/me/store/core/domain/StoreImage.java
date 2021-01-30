@@ -21,7 +21,7 @@ import lombok.Setter;
  * @name   점포
  *
  */
-@Table(name = "storeImage")
+@Table(name = "store_image")
 @Entity
 @Getter
 public class StoreImage {
@@ -42,9 +42,8 @@ public class StoreImage {
 
 	@ApiModelProperty(value="이미지구분")
 	@Setter
-	//@Enumerated(EnumType.STRING)
-	//private ImageSortEnum imageSort;//--수정 sotreImage테이블 점포사진? 이미지 구분->char(2)
-	private String imageSort;
+	@Enumerated(EnumType.STRING)
+	private ImageSortEnum imageSort;
 
 	@ApiModelProperty(value="삭제여부")
 	@Setter
@@ -65,11 +64,11 @@ public class StoreImage {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMdd", timezone = "Asia/Seoul") 
 	private LocalDateTime modDatetime;
 
-	@ApiModelProperty(value="등록자")
+	@ApiModelProperty(value="등록자", hidden = true)
 	@Setter
 	private Long regUserNo;
 
-	@ApiModelProperty(value="수정자")
+	@ApiModelProperty(value="수정자", hidden = true)
 	@Setter
 	private Long modUserNo;
 }

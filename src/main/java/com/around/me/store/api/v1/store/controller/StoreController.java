@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -29,9 +30,19 @@ public class StoreController {
 	// 점포서비스
 	private final StoreService storeService;
 
+    @ApiOperation(value = "점포 정보 조회")
+    @GetMapping(value = "/store/{storeNo}")
+    Response<Store> getStore(@ApiParam(value = "점포 번호", required = true, example = "1")
+                             @PathVariable long storeNo) {
+
+        Store store = storeService.getStore(storeNo);
+
+        return Response.ok(store);
+    }
+
 	@ApiOperation(value = "점포 이벤트 조회")
 	@GetMapping(value = "/store/{storeNo}/events")
-	Response<List<EventDTO>> events(@PathVariable Long storeNo) {
+	Response<List> events(@PathVariable Long storeNo) {
 
 		// 1. 조회조건
 		GetParamEventDTO getParamEventDTO = new GetParamEventDTO();
@@ -39,9 +50,9 @@ public class StoreController {
 		getParamEventDTO.setStoreNo(storeNo);
 
 		// 2. 조회
-		List<EventDTO> events = storeService.getEvents(getParamEventDTO);
+        Response<List> events = storeService.getEvents(getParamEventDTO);
 
-        return Response.ok(events);
+        return events.ok(events.getContent());
 	}
 	
     @ApiOperation(value = "점포 리스트 조회")
@@ -51,27 +62,5 @@ public class StoreController {
         List<Store> stores = storeService.getStores();
 
         return Response.ok(stores);
-    }
-
-    @ApiOperation(value = "점포 정보 조회")
-    @GetMapping(value = "/store/{storeNo}")
-    Response<Store> getStore(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
-
-        Store store = storeService.getStore(storeNo);
-
-        return Response.ok(store);
-    }
-    
-    @ApiOperation(value = "점포 이미지 리스트 조회")
-    @GetMapping(value = "/store/{storeNo}/images")
-    Response<List<StoreImage>> getStoreImages(@ApiParam(value = "점포 번호", required = true, example = "1") @PathVariable long storeNo) {
-
-        List<StoreImage> storeImages = storeService.getStoreImages(storeNo);
-
-        for(StoreImage si:storeImages) {
-        	System.out.println(si.toString());
-        }
-        
-        return Response.ok(storeImages);
     }
 }

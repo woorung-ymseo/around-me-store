@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "storeKeywordManage")
+@Table(name = "store_keyword_manage")
 @Entity
 @Getter
 public class StoreKeywordManage {

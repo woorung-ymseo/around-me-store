@@ -1,11 +1,10 @@
 package com.around.me.store.core.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.around.me.store.core.enums.common.YnEnum;
 
@@ -17,7 +16,7 @@ import lombok.Getter;
  * @name   메뉴 타입
  *
  */
-@Table(name = "menuType")
+@Table(name = "menu_type")
 @Entity
 @Getter
 public class MenuType {
@@ -47,4 +46,8 @@ public class MenuType {
 
     @ApiModelProperty(value="수정자")
     private Long modUserNo;
+
+	@ApiModelProperty(value="메뉴 타입")
+	@OneToMany(mappedBy = "MenuType")
+	private List<MenuDetail> menuDetail = new ArrayList<>();
 }

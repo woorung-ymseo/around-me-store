@@ -1,28 +1,20 @@
 package com.around.me.store.core.domain;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.around.me.store.core.enums.common.YnEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * @author wonho
  * @name   메뉴 상세
  *
  */
-@Table(name = "menuDetail")
+@Table(name = "menu_Detail")
 @Entity
 @Getter
 public class MenuDetail {
@@ -32,8 +24,10 @@ public class MenuDetail {
 	@GeneratedValue
 	private long menuNo;
 
-	@ApiModelProperty(value="메뉴 타입 번호")
-	private long menuTypeNo;
+	@ApiModelProperty(value="메뉴 타입")
+	@ManyToOne
+	@JoinColumn(name = "MENU_TYPE_NO")
+	private MenuType MenuType;
 
 	@ApiModelProperty(value="점포번호")
 	private long storeNo;

@@ -16,7 +16,7 @@ import lombok.Setter;
  * @name   점포키워드
  *
  */
-@Table(name = "storeKeyword")
+@Table(name = "store_keyword")
 @Entity
 @Getter
 public class StoreKeyword {

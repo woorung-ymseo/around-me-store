@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 
-@Table(name = "Wishlist")
+@Table(name = "wishlist")
 @Entity
 @Getter
 public class Wishlist {
